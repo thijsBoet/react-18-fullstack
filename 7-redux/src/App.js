@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { addMovie } from './store/movies';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const movies = useSelector(state => state.movies.list);
+	const dispatch = useDispatch();
+
+	return (
+		<>
+			<h2>Movies</h2>
+			<ul>
+				{movies &&
+					movies.map(movie => (
+						<li key={movie.id}>{`${movie.title} - ${movie.year}`}</li>
+					))}
+			</ul>
+			<hr />
+			<button onClick={() => dispatch(addMovie())}>Add Movie</button>
+		</>
+	);
+};
 
 export default App;
