@@ -32,13 +32,13 @@ export const moviesSlice = createSlice({
         ],
     },
     reducers: {
-        addMovie: (state) => {
-            const newMovie = {
-                id: state.list.length + 1,
-                title: 'Sunshine',
-                year: 2019,
-            }
-            state.list = [...state.list, newMovie];
+        addMovie: (state, action) => {
+            // const newMovie = {
+            //     id: state.list.length + 1,
+            //     title: 'Sunshine',
+            //     year: 2019,
+            // }
+            state.list = [...state.list, action.payload];
         }
     }
 });
