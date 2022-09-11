@@ -16,8 +16,6 @@ export const fetchPosts = createAsyncThunk(
 				items: [...prevState.articles.items, ...response.data],
 				page: page,
 			}
-
-			console.log(response.data);
 		} catch (error) {
 			throw error;
 		}
