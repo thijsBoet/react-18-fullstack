@@ -6,12 +6,11 @@ import { fetchPosts } from '../../store/utils/thunks';
 const HomePosts = () => {
     const homePosts = useSelector(state => state.posts);
     
-    console.log(homePosts);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(fetchPosts({ page: 1, order: 'desc', limit: 6 }));
-	});
+	}, []);
 
 	return (
 		<>
@@ -20,11 +19,11 @@ const HomePosts = () => {
 				className='my-masonry-grid'
 				columnClassName='my-masonry-grid_column'
 			>
-				{/* {homePosts.articles
+				{homePosts.articles
 					? homePosts.articles.items.items.map((post) => (
 							<div key={post.id}>Hello</div>
 					  ))
-					: null} */}
+					: null}
 			</Masonry>
 		</>
 	);
